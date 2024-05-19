@@ -1,21 +1,13 @@
-import { RotatingLines } from 'react-loader-spinner'
+import { MagnifyingGlass } from 'react-loader-spinner';
 
-const Loader = () => {
-  return (
-		<div className='loader'>
-			<RotatingLines
-				visible={true}
-				height='96'
-				width='96'
-				color='blue'
-				strokeWidth='5'
-				animationDuration='0.75'
-				ariaLabel='rotating-lines-loading'
-				wrapperStyle={{}}
-				wrapperClass=''
-			/>
-		</div>
-	)
-};
-
-export default Loader
+export default function Loader() {
+    return <MagnifyingGlass
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="magnifying-glass-loading"
+            wrapperStyle={{}}
+            wrapperClass="magnifying-glass-wrapper"
+            glassColor="#c0efff"
+            color="#e15b64"/>
+}

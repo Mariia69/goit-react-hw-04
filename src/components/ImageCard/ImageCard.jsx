@@ -1,13 +1,9 @@
-import css from './ImageCard.modul.css'
 
-const ImageCard = ({ image, onClick }) => {
-  return (
-		<li>
-			<div onClick={onClick}>
-				<img src={image.urls.small} alt={image.urls.description} className={css.item} />
-			</div>
-		</li>
-	)
-};
+export default function ImageCard({ image, setIsOpen, setImage }) {
+    const { raw, full, regular, small, thumb } = image.urls;
+    const { id } = image.id;
 
-export default ImageCard
+    return <div id={id} >
+        <img onClick={() => { setIsOpen(true); setImage(regular)}} src={small} alt="" width={50} height={50}/>
+    </div>
+}

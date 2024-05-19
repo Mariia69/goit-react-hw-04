@@ -1,5 +1,5 @@
-const ErrorMessage = ({ message }) => {
-    return <div className='error-message'>{message}</div>
-  }
-  
-  export default ErrorMessage
+import  { Toaster } from 'react-hot-toast'
+
+export default function ErrorMessage() {
+    return <Toaster/>
+}
