@@ -1,10 +1,18 @@
-import { nanoid } from 'nanoid';
-import ImageCard from '../ImageCard/ImageCard';
-import css from "../imageGallery/ImageGallery.module.css";
+import ImageCard from '../ImageCard/ImageCard'
+import css from './ImageGallery.module.css'
 
-export default function ImageGallery(data) {
-    const gallery = data.data.map(image => {
-        return <li key={nanoid()}> <ImageCard image={image} /></li>
-    });
-    return <ul className={css.imageGallery}>{gallery }</ul>
+const ImageGallery = ({ images, onImageClick }) => {
+	return (
+		<ul className={css.list}>
+			{images.map(image => (
+				<ImageCard
+					key={image.id}
+					image={image}
+					onClick={() => onImageClick(image)}
+				/>
+			))}
+		</ul>
+	)
 }
+
+export default ImageGallery

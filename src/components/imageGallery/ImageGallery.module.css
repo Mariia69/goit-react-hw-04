@@ -1,8 +1,11 @@
-.imageGallery {
-    list-style: none;
-  
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 20px;
+.modal {
+  width: 1112px;
+  height: 640px;
   }
+  
+  .img {
+  max-width: 100%;
+  height: auto;
+  }
+  
+ 

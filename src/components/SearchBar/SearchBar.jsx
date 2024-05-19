@@ -1,31 +1,41 @@
-import { Formik ,Form,Field} from 'formik';
-export default function SearchBar({ onSearch, catchError }) {
-    
-    const handleSubmit = (values) => {
-        if (values.searchQuery.trim() == "") {
-            catchError()
-            console.log("error")
-        } else {
-        onSearch(values.searchQuery)
-        }
-    };
+import { FiSearch } from 'react-icons/fi'
+import { useState } from 'react'
+import toast, { Toaster } from 'react-hot-toast'
+import style from './SearchBar.module.css'
 
-    return <header>
-        <Formik
-            onSubmit={handleSubmit}
-            initialValues={{ searchQuery: "" }}
-        >
-            <Form>
-                <Field
-                    name="searchQuery"
-                    type="text"
-                    autoComplete="off"
-                    autoFocus
-                    placeholder="Search images and photos"
-                ></Field>
-                <button type="submit">Search</button>
-            </Form>
-        </Formik>
-    </header>;
+const SearchBar = ({ onSubmit }) => {
+	const [query, setQuery] = useState('')
 
+	function handleSubmit(e) {
+		e.preventDefault()
+		if (query.trim() === '') {
+			toast.error('Please input valid query!')
+			return
+		}
+		onSubmit(query)
+		setQuery('')
+	}
+
+	return (
+		<>
+			<form className={style.form} onSubmit={handleSubmit}>
+				<button className={style.button} type='submit'>
+					<FiSearch size='16px' />
+				</button>
+
+				<input
+					className={style.input}
+					placeholder='Search images and photos'
+					name='search'
+					value={query}
+					onChange={e => setQuery(e.target.value)}
+					required
+					autoFocus
+				/>
+			</form>
+			<Toaster />
+		</>
+	)
 }
+
+export default SearchBar
