@@ -1,5 +1,13 @@
-import css from "./ImageCard.module.css";
+import css from "./ImageCard.modul.css";
 
-export default function ImageCard({ item, openModal }) {
-  return <img className={css.galleryImage} onClick={() => openModal(item)} src={item.urls.small} alt={item.alt} />;
-}
+const ImageCard = ({ item, openModal }) => {
+  return (
+		<li>
+			<div onClick={openModal}>
+				<img src={item.urls.small} alt={item.urls.description} className={css.item} />
+			</div>
+		</li>
+	)
+};
+
+export default ImageCard
