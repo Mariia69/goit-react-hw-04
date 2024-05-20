@@ -1,4 +1,7 @@
-.item {
-	width: 100%;
-  height: auto;
+.galleryImage {
+  object-fit: cover;
+}
+
+.galleryImage:hover {
+  cursor: zoom-in;
 }

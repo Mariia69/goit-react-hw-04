@@ -1,9 +1,25 @@
-import ImageCard from '../ImageCard/ImageCard';
-import css from "../imageGallery/ImageGallery.module.css";
+import ImageCard from "../ImageCard/ImageCard";
+import { forwardRef } from "react";
+import css from "./ImageGallery.module.css";
 
-export default function ImageGallery({ data, setIsOpen, setImage }) {
-    const gallery = data.map(image => {
-        return <li key={image.id}> <ImageCard image={image} setIsOpen={setIsOpen} 
-        setImage={setImage} /></li>
-    });
-    return <ul className={css.imageGallery}>{gallery }</ul>}
+const ImageGallery = forwardRef(({ items, openModal, perPage }, ref) => {
+  const newImageIndex = items.length - perPage;
+  // Функція перевірки співпадіння індексу масиву зображень
+  // Повертає true або false
+  const isNewImage = (index) => index === newImageIndex;
+
+  return (
+    <ul className={css.gallery}>
+      {items.map((item, index) => (
+        <li className={css.galleryItem} key={item.id} ref={isNewImage(index) ? ref : null}>
+          <ImageCard item={item} openModal={openModal} />
+        </li>
+      ))}
+    </ul>
+  );
+});
+
+// Обов'язкове додавання відображуваного ім'я у визначені компонента на вимогу eslint
+ImageGallery.displayName = "ImageGallery";
+
+export default ImageGallery;

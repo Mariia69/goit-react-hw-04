@@ -1,3 +1,9 @@
-export default function LoadMoreBtn({onLoadMore}) {
-  return <button onClick={onLoadMore}>Load more</button>
-  }
+import css from "./LoadMoreBtn.module.css";
+
+export default function LoadMoreBtn({ nextPage }) {
+  return (
+    <button className={css.loadBtn} onClick={() => nextPage()}>
+      Load more
+    </button>
+  );
+}

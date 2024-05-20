@@ -1,24 +1,20 @@
-.button {
-    display: block;
-  
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 40px;
-    margin-bottom: 40px;
-  
-    color: var(--color-white);
-    background-color: var(--color-lightBlue);
-  
-    border-radius: 8px;
-  
-    padding: 15px 30px;
-    text-transform: uppercase;
-    font-weight: bold;
-    cursor: pointer;
-    transition: box-shadow var(--animation-cubicBezier);
-  }
-  
-  .button:hover,
-  .button:focus {
-    box-shadow: var(--shadow-small);
-  }
+.loadBtn {
+  font-family: inherit;
+  border: none;
+  width: 140px;
+  height: 40px;
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.64px;
+  text-transform: uppercase;
+  background-image: linear-gradient(to right, #de367f 0%, #4830f0 51%, #de367f 100%);
+  background-size: 200% auto;
+  transition: 0.5s;
+}
+
+.loadBtn:hover {
+  background-position: right center;
+}

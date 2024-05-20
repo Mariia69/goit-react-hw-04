@@ -1,31 +1,39 @@
-import { Formik ,Form,Field} from 'formik';
-export default function SearchBar({ onSearch, catchError }) {
-    
-    const handleSubmit = (values) => {
-        if (values.searchQuery.trim() == "") {
-            catchError()
-            console.log("error")
-        } else {
-        onSearch(values.searchQuery)
-        }
-    };
+import css from "./SearchBar.module.css";
+import { IoIosSearch } from "react-icons/io";
+import { Field, Form, Formik } from "formik";
+import toast from "react-hot-toast";
 
-    return <header>
-        <Formik
-            onSubmit={handleSubmit}
-            initialValues={{ searchQuery: "" }}
-        >
-            <Form>
-                <Field
-                    name="searchQuery"
-                    type="text"
-                    autoComplete="off"
-                    autoFocus
-                    placeholder="Search images and photos"
-                ></Field>
-                <button type="submit">Search</button>
-            </Form>
-        </Formik>
-    </header>;
+export default function SearchBar({ onSearch }) {
+  const handleSubmit = (value, actions) => {
+    !value.search
+      ? toast("Please enter search term!", {
+          style: {
+            color: "#ffffff",
+            backgroundColor: "#FF8C00",
+          },
+        })
+      : onSearch(value.search);
 
+    actions.resetForm();
+  };
+
+  return (
+    <header className={css.headerContainer}>
+      <Formik initialValues={{ search: "" }} onSubmit={handleSubmit}>
+        <Form className={css.searchForm}>
+          <Field
+            className={css.searchInput}
+            autoComplete="off"
+            autoFocus
+            type="text"
+            name="search"
+            placeholder="Search images and photos"
+          />
+          <button className={css.searchBtn} type="submit">
+            <IoIosSearch className={css.searchIcon} />
+          </button>
+        </Form>
+      </Formik>
+    </header>
+  );
 }
